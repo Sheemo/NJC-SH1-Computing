@@ -1,0 +1,5 @@
+i = int(input("Please input an integer between 1 and 12 (inclusive):"))
+
+print ("Multiples of",i)
+for x in range(1,13):
+    print (i * x)

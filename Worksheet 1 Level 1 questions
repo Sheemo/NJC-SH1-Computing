@@ -1,0 +1,231 @@
+'''Worksheet 1'''
+'''Question 1'''
+a = 5
+b = a + 7
+a = 10
+print (b) #12
+
+'''Question 2'''
+and #illegal; and is a comparator term
+_and #legal
+var #legal
+var1 #legal
+1var #illegal; no numbers at the start of variables
+my-name #illegal; no dashes in variables,- is an operator
+your_name #legal
+COLOUR #legal
+
+'''Question 3'''
+a = False #boolean
+b = 3.7 #float
+c = 'Alex' #string
+d = 7 #integer
+e = 'True' #string
+f = 12 ** 3 #integer
+g = '17' #string
+h = True #boolean
+i = '3.14159' #string
+j = 12 // 27 #integer
+k = 2.0 / 1 #float
+l = (5 == "5") #boolean
+m = str((-4 + abs(-5) // 2 ** 3) + 321 - ((64 // 16) % 4) ** 2) #string
+
+'''Question 4'''
+a = False
+b = True
+c = False
+
+b and c #False
+b or c #True
+not a and b #True
+(a and b) or not c #True
+not b and not (a or c) #False
+
+'''Question 5'''
+print (5 == 5.0) #True
+print (float(1/2)) #0.5
+print (float(1)/2) #0.5
+print (5 == "5") #False
+print (True and (False or not True)) #False
+print ("sdf" != "sdf") #False
+print (str(53) + str(True)) #53True
+a = 20
+print (str(15 - (a - 15)) + ",", end="")
+a = 10
+print (15 - (a - 15)) #10,20
+
+'''Question 6'''
+a = ?
+if a > 10 and a % 6 == 3:
+    print("a", end=" ")
+elif a > 10 and a < 20:
+    print("b", end=" ")
+else:
+    print("c", end=" ")
+
+a b #none
+a #21
+b #18
+c #22
+none! #"happiness"
+
+'''Question 7'''
+a = 5
+while a < 8:
+    print ("X",end=" ") #infinite loop
+
+a = -1
+while a < 3:
+    print ("X", end=" ")
+    a = a + 1 #X X X X
+
+a = 1
+while a % 7 != 0:
+    if a % 2 == 0:
+        print ("O", end=" ")
+    if a == 2:
+        print ("X", end=" ")
+    a = a + 1 #O O O
+
+'''Question 8'''
+num = 10
+while num > 3:
+    print (num)
+    num = num - 1
+#10
+#9
+#8
+#7
+#6
+#5
+#4
+
+divisor = 2
+for i in range(0,10,2):
+    print (i / divisor)
+#0
+#1
+#2
+#3
+#4
+
+num = 10
+while True:
+    if num < 7:
+        break
+    print (num)
+    num -= 1
+
+#10
+#9
+#8
+#7
+
+count = 0
+for letter in 'Snow!':
+    print ('Letter #',count,'is',letter)
+    count += 1
+#Letter #0 is S
+#Letter #1 is n
+#Letter #2 is o
+#Letter #3 is w
+#Letter #4 is !
+
+'''Question 9'''
+keep_going = True
+a = 0
+b = 0
+while keep_going:
+    print ("O")
+    a = a + 5
+    b = b + 7
+    if a + b >= 24:
+        keep_going = False
+#O
+#O
+
+keep_going = True
+a = 0
+b = 0
+while keep_going:
+    print ("O")
+    if a + b >= 24:
+        keep_going = False
+    a = a + 5
+    b = b + 7
+#O
+#O
+#O
+
+keep_going = True
+a = 0
+b = 0
+while keep_going:
+    print ("O")
+    a = a + 5
+    b = b + 7
+    if a + b > 24:
+        keep_going = False
+#O
+#O
+#O
+
+keep_going = True
+a = 0
+b = 0
+while keep_going:
+    print ("O")
+    if a + b > 24: keep_going = False
+    a = a + 5
+    b = b + 7
+#O
+#O
+#O
+#O
+
+'''Question 10'''
+a = 0
+while a < 3:
+    while True:
+        print ("X")
+        break
+    print ("O", end=" ")
+    a = a + 1
+#X
+#O X
+#O X
+#O
+
+a = 1
+while a < 3:
+    while a < 3:
+        print("O", end=" ")
+    a = a + 1
+#infinite loop
+
+a = 1
+while a < 3:
+    if a % 2 == 0:
+        b = 1
+        while b < 3:
+            print ("X", end=" ")
+            b = b + 1
+        print ("O", end=" ")
+        a = a + 1
+#infinite loop
+
+'''Question 11'''
+a = 0
+while a <= 3:
+    if a != 0 and a != 3:
+        b = 1
+        while b < 2:
+            print ("O",end="")
+            b = b + 1
+        print ("X",end="")
+    else:
+        b = 1
+        while b < 3:
+            print ("O",end="")
+            b = b + 1
+    a = a + 1

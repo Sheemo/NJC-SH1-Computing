@@ -1,0 +1,24 @@
+phrase = input("Please enter your phrase to be encoded: ")
+shift = int(input("Please enter the shift value: "))
+
+encoded_phrase = ""
+for c in phrase:
+    if c.isalpha():
+        c_ascii = ord(c)
+        if c_ascii >= 65 and c_ascii <= 90:
+            uc = True
+        else:
+            uc = False
+        c_ascii += shift
+        if uc:
+            if c_ascii > 90:
+                c_ascii = c_ascii % 90 + 64
+        else:
+            if c_ascii > 122:
+                c_ascii = c_ascii % 122 + 96
+        new = chr(c_ascii)
+        encoded_phrase += new
+    else:
+        encoded_phrase += c
+
+print("Encoded phrase is",encoded_phrase)

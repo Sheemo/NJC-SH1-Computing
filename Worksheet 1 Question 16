@@ -1,0 +1,66 @@
+beats_scissors = ["rock","spock"]
+beats_rock = ["paper","spock"]
+beats_paper = ["scissors","lizard"]
+beats_lizard = ["rock","scissors"]
+beats_spock = ["lizard","paper"]
+
+while True:
+    p1 = input("Player1?").lower()
+    p2 = input("Player2?").lower()
+
+    if p1 == p2:
+        print ("Draw")
+        continue
+    if p1 == "scissors":
+        if p2 in beats_scissors:
+            print ("Player 2 wins.")
+            break
+        elif p2 in beats_paper or p2 in beats_lizard:
+            print ("Player 1 wins.")
+            break
+        else:
+            print ("Draw")
+            continue
+    elif p1 == "rock":
+        if p2 in beats_rock:
+            print ("Player 2 wins.")
+            break
+        elif p2 in beats_lizard or p2 in beats_scissors:
+            print ("Player 1 wins.")
+            break
+        else:
+            print ("Draw")
+            continue
+    elif p1 == "paper":
+        if p2 in beats_paper:
+            print ("Player 2 wins.")
+            break
+        elif p2 in beats_rock or p2 in beats_spock:
+            print ("Player 1 wins.")
+            break
+        else:
+            print ("Draw")
+            continue
+    elif p1 == "lizard":
+        if p2 in beats_lizard:
+            print ("Player 2 wins.")
+            break
+        elif p2 in beats_paper or p2 in beats_spock:
+            print ("Player 1 wins.")
+            break
+        else:
+            print ("Draw")
+            continue
+    elif p1 == "spock":
+        if p2 in beats_spock:
+            print ("Player 2 wins.")
+            break
+        elif p2 in beats_rock or p2 in beats_scissors:
+            print ("Player 1 wins.")
+            break
+        else:
+            print ("Draw")
+            continue
+    
+    print ("One of you didn't play a legitimate move!")
+        

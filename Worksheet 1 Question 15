@@ -1,0 +1,24 @@
+magnitude = float(input("Enter a quantity: "))
+quantity = input("Select either length, area or volume: ")
+base_unit = input("Select the base unit of measurement (mm, cm, m, km): ")
+converted_unit = input("Select which base unit of measurement to convert to (mm, cm, m, km): ")
+
+magnitudes = {"mm": 0.001, "cm": 0.01, "m":1, "km":1000}
+if quantity == "length":
+    c_magnitude =  magnitude * (magnitudes[base_unit] / magnitudes[converted_unit])
+    if int(c_magnitude) == c_magnitude:
+        print (magnitude,base_unit,"=",int(c_magnitude),converted_unit)
+    else:
+        print (magnitude,base_unit,"=",c_magnitude,converted_unit)
+elif quantity == "area":
+    c_magnitude = magnitude * ((magnitudes[base_unit] / magnitudes[converted_unit]) ** 2)
+    if int(c_magnitude) == c_magnitude:
+        print (magnitude,base_unit,"^2 = ",int(c_magnitude), converted_unit,"^2",sep="")
+    else:
+        print (magnitude,base_unit,"^2 = ",c_magnitude, converted_unit,"^2",sep="")
+elif quantity == "volume":
+    c_magnitude = magnitude * ((magnitudes[base_unit] / magnitudes[converted_unit]) ** 3)
+    if int(c_magnitude) == c_magnitude:
+        print (magnitude,base_unit,"^3 = ",int(c_magnitude), converted_unit,"^3",sep="")
+    else:
+        print (magnitude,base_unit,"^3 = ",c_magnitude, converted_unit,"^3",sep="")

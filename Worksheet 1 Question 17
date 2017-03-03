@@ -1,0 +1,33 @@
+B = int(input("Day born?"))
+A = int(input("Month born?"))-2
+year = input("Year born?")
+C = int(year[len(year)-2:])
+D = int(year[:len(year)-2])
+
+if A <= 0:
+    C -= 1
+    A += 12
+
+if C <= 0:
+    C += 100
+    D -= 1
+W = (13 * A - 1)//5
+X = C // 4
+Y = D // 4
+Z = W + X + Y + B + C - 2 * D
+R = Z % 7
+
+if R == 0:
+    print ("Your birthday fell on: Sunday")
+elif R == 1:
+    print ("Your birthday fell on: Monday")
+elif R == 2:
+    print ("Your birthday fell on: Tuesday")
+elif R == 3:
+    print ("Your birthday fell on: Wednesday")
+elif R == 4:
+    print ("Your birthday fell on: Thursday")
+elif R == 5:
+    print ("Your birthday fell on: Friday")
+elif R == 6:
+    print ("Your birthday fell on: Saturday")

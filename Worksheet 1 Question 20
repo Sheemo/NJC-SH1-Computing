@@ -1,0 +1,30 @@
+from math import log
+
+p = int(input("Select the Prime Number you want:")) #gets user input
+
+if p == 1:
+    i = 2 #if p is 1, print 2
+else:
+    count = 1
+    i = 1
+    non_primes = {} #count checks how many primes have been checked and proven to be primes
+    m = int(p * (log(p) + log(log(p)))) #determines the limit of the while loop. Notice that it uses log(p) which if p is 1, log(log(p)) will be log(0) which is illegal, hence the special case above.
+
+    while count < p:
+        i += 2
+        if i not in non_primes:
+            count += 1
+            k = i ** 2 #k determines the non-prime numbers which are factors of i
+
+            if k > m:
+                break #if k is more than m, all the non-primes below the i-th prime number have been accounted for
+            while k <= m: #if k is less than m, k is definitely not a prime since its the square of i or its the square of i + 2*i
+                non_primes[k] = 0 #put this value of k in the dictionary
+                k += 2*i #increment by 2*i
+
+    while count < p: #when the above while loop terminates, all the non-primes have been accounted for.
+        i += 2 #increment i
+        if i not in non_primes:
+            count += 1 #check if i is a non-prime; if its not, increase count by 1
+
+print ("Prime number",p,":",i)

@@ -1,0 +1,36 @@
+c10 = int(input("Enter the number of 10-cent coins inserted: "))
+c20 = int(input("Enter the number of 20-cent coins inserted: "))
+c50 = int(input("Enter the number of 50-cent coins inserted: "))
+c100 = int(input("Enter the number of 1-dollar coins inserted: "))
+
+price = round(float(input("Please enter either the price of the drink, i.e., 0.8 or 1.2:")),2)
+total = (c10 * 0.1) + (c20 * 0.2) + (c50 * 0.5) + c100
+if total < price:
+    print ("Not enough money!")
+else:
+    change = total - price
+    print ("Total inserted: $",total)    
+    print ("The machine returns a total of $",change,",in the form of:")
+
+    coins = [0,0,0,0]
+
+    while change > 0.0:
+        if change >= 1:
+            coins[0] += 1
+            change -= 1.0
+        elif change >= 0.5:
+            coins[1] += 1
+            change -= 0.5
+        elif change >= 0.2:
+            coins[2] += 1
+            change -= 0.2
+        elif change >= 0.1:
+            coins[3] += 1
+            change -= 0.1
+        change = round(change,2)
+        print (change)
+
+    print (coins[0],"x 1-dollar coin[s]")
+    print (coins[1],"x 50-cent coin[s]")
+    print (coins[2],"x 20-cent coin[s]")
+    print (coins[3],"x 10-cent coin[s]")

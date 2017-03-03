@@ -1,0 +1,104 @@
+num = input("Input a number:")
+num_1 = num
+sf = int(input("Number of significant figures:"))
+c_sf = 0
+
+def neg_sign(num):
+    sign = ""
+    if num[0] == "-":
+        sign = "-"
+
+    return sign
+
+def dec_point(num):
+    for i in num:
+        if i == ".":
+            return True
+    else:
+        return False
+    
+def count_0pre(num):
+    zeros = 0
+    while num[0] == "0":
+        num = num[:0] + "" + num[1:]
+        zeros += 1
+
+    return zeros
+
+def count_0tra(num):
+    zeros = 0
+    while num.endswith("0"):
+        num = num[:-1]
+        zeros += 1
+
+    return zeros
+
+if neg_sign(num_1) == "-":
+    num_1 = num_1.replace("-","")
+    
+if dec_point(num_1) == True:
+    num_1 = num_1.replace(".","")
+    c_sf = len(num_1) - count_0pre(num_1)
+else:
+    c_sf = len(num_1) - count_0pre(num_1) - count_0tra(num_1)
+
+print ("The value",num,"rounded to",sf,"significant figures is:",end=" ")
+
+if sf >= c_sf: #if user requests more significant figures than provided
+    if sf == c_sf:
+        num = num #do nothing
+    elif dec_point(num):
+        num = num + ("0"*(sf-c_sf)) #append 0s to floats
+    else:
+        num = num + "." + ("0"*(sf-c_sf)) #add decimal point, then append 0s to non-floats
+else:
+    last_digit = num_1[sf]
+    if int(last_digit) < 5: #if rounding down
+        if neg_sign(num) == "-":
+            if dec_point(num):
+                num = num[:sf+2] #rounding negative floats
+
+                if dec_point(num) == False:
+                    num = num + ("0"*(c_sf - len(num)))
+            else:
+                num = num[:sf+1] + ("0"*(c_sf-sf)) #rounding negative ints
+        else:
+            if dec_point(num):
+                num = num[:sf+1] #rounding positive floats
+
+                if dec_point(num) == False:
+                    num = num + ("0"*(c_sf - len(num) - 1))
+            else:
+                num = num[:sf] + ("0"*(c_sf-sf)) #rounding positive ints
+    else:
+        if dec_point(num) == True:
+            if neg_sign(num) == "-": #rounding negative floats
+                num = float(num)
+                num -= (1 * (10 ** ((-1 * sf) + 1)))
+                num = str(num)[:sf+2]
+
+                c_sf = len(num) - 2 - count_0pre(num)
+                num = num + ("0"*(sf-c_sf))
+            else: #rounding positive floats
+                num = float(num)
+                num += (1 * (10 ** ((-1 * sf) + 1)))
+                num = str(num)[:sf+1]
+
+                c_sf = len(num) - 1 - count_0pre(num)
+                num = num + ("0"*(sf-c_sf))
+        else:
+            if neg_sign(num) == "-": #rounding negative ints
+                num = int(num)
+                num -= (1 * (10 ** (c_sf - sf)))
+                num = str(num)[:sf+1]
+
+                num = num + ("0"*(len(num_1)-sf))
+            else: #rounding positive ints
+                num = int(num)
+                num += (1 * (10 ** (len(num_1) - sf)))
+                c_sf = len(str(num)) - count_0pre(str(num)) - count_0tra(str(num))
+                num = str(num)[:sf]
+
+                num = num + ("0"*(len(num_1)-sf))
+
+print (num)
